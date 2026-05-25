@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Sophia</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* SAFE FIX so text ALWAYS shows */
+    .title .happy span,
+    .title .birthday span {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      animation: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+  <!-- FLAGS -->
+  <div class="flag__birthday">
+    <img src="1.png" width="350" class="flag__left">
+    <img src="1.png" width="350" class="flag__right">
+  </div>
+
+  <div class="content">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <div class="title">
+
+        <div class="emoji-top">
+          HAPPY BIRTHDAY! ♡
+        </div>
+
+  <h1 class="happy">HAPPY</h1>
+
+  <h1 class="birthday">BIRTHDAY</h1>
+
+      </div>
+
+      <div class="date__of__birth">
+        <span>19 such an aunt!</span>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="btn">
+        <button id="btn__letter">
+          <div class="mail">Surprise?</div>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <div class="box__account">
+
+        <div class="image">
+          <img src="unnamed.png">
+        </div>
+
+        <div class="name">
+          <span>Sophia</span>
+        </div>
+
+        <div class="balloon_one">
+          <img src="balloon1.png" width="120">
+        </div>
+
+        <div class="balloon_two">
+          <img src="balloon2.png" width="85">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SMILEY -->
+  <div class="smiley__icon">
+    <img src="smiley_icon.png" width="200">
+  </div>
+
+  <!-- POPUP LETTER -->
+  <div class="boxMail">
+
+    <i class="fa-solid fa-xmark"></i>
+
+    <div class="boxMail-container">
+
+      <div class="card1">
+        <div class="userImg">
+          <img src="unnamed.png">
+        </div>
+
+        <h4>To: Sophia :3</h4>
+        <h3>Happy Birthday</h3>
+      </div>
+
+      <div class="card2">
+        <div class="card2-content">
+          <h3>:3</h3>
+
+          <h2>
+            Happy Birthday! <br><br>
+
+            Heyy SOPHIA !! have the best birthday ever wishing you this day to be filled with love, laughter, and unforgettable moments. May this year bring you endless joy and success. You deserve all the love and happiness in the world! Dont ever forget about me I hope I can live inside you forever hehe :3
+
+          </h2>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<audio id="song" src="supershy.mp3"></audio>
+<!-- SCRIPT -->
+<script>
+
+const mailBox = document.querySelector('.mail');
+const boxMail = document.querySelector('.boxMail');
+const closeBtn = document.querySelector('.fa-xmark');
+
+mailBox.onclick = () => {
+  boxMail.classList.add('active');
+
+  const song = document.getElementById("song");
+  song.currentTime = 0;
+  song.play();
+};
+
+closeBtn.onclick = () => {
+  boxMail.classList.remove('active');
+};
+
+</script>
+
+</body>
+</html>
