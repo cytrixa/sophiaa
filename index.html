@@ -1,161 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Sophia</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday</title>
 
-  <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ee9194, #fecfef, #fad0c4);
+        background-size: 400% 400%;
+        animation: gradientMove 10s ease infinite;
+        font-family: "Quicksand", sans-serif;
+      }
 
-  <style>
-    /* SAFE FIX so text ALWAYS shows */
-    .title .happy span,
-    .title .birthday span {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: translateY(0) !important;
-      animation: none !important;
-    }
-  </style>
-</head>
+      @keyframes gradientMove {
+        0% {
+          background-position: left;
+        }
+        50% {
+          background-position: right;
+        }
+        100% {
+          background-position: left;
+        }
+      }
 
-<body>
+      .floating {
+        position: absolute;
+        bottom: -100px;
+        animation: floatUp linear infinite;
+        opacity: 0.8;
+        z-index: 0;
+        pointer-events: none;
+      }
 
-<div id="wrapper">
+      @keyframes floatUp {
+        from {
+          transform: translateY(0) rotate(0deg);
+        }
+        to {
+          transform: translateY(-120vh) rotate(360deg);
+        }
+      }
 
-  <!-- FLAGS -->
-  <div class="flag__birthday">
-    <img src="1.png" width="350" class="flag__left">
-    <img src="1.png" width="350" class="flag__right">
-  </div>
 
-  <div class="content">
+      .sparkle {
+        position: absolute;
+        color: white;
+        opacity: 0.7;
+        animation: twinkle 2s infinite alternate;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-    <!-- LEFT -->
-    <div class="left">
+      @keyframes twinkle {
+        from {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.4);
+        }
+      }
 
-      <div class="title">
 
-        <div class="emoji-top">
-          HAPPY BIRTHDAY! ♡
+      .card {
+        animation: fadeIn 1.5s ease;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 35px rgba(255, 105, 180, 0.25);
+      }
+
+      @keyframes fadeIn {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .card-float {
+        animation: cardFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes cardFloat {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+
+      .glow {
+        animation: glow 2s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px #ff4da6;
+        }
+        to {
+          text-shadow: 0 0 25px #ff1493;
+        }
+      }
+
+
+      .text-shadow {
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4),
+          0 0 20px rgba(255, 105, 180, 0.3);
+      }
+
+
+      .soft-pulse {
+        animation: softPulse 2s infinite;
+      }
+
+      @keyframes softPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.04);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+
+      .cute-btn {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      }
+
+      .cute-btn:hover {
+        box-shadow: 0 0 35px rgba(255, 105, 180, 0.8);
+      }
+
+      .cute-btn::before {
+        content: "";
+        position: absolute;
+        top: -120%;
+        left: -40%;
+        width: 50%;
+        height: 300%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: rotate(25deg);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          left: -60%;
+        }
+        100% {
+          left: 130%;
+        }
+      }
+
+
+      .blur-heart {
+        position: absolute;
+        font-size: 120px;
+        opacity: 0.18;
+        filter: blur(2px);
+        z-index: 0;
+        animation: floatHeart 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .heart1 {
+        top: 10%;
+        left: 8%;
+      }
+
+      .heart2 {
+        bottom: 12%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .heart3 {
+        top: 50%;
+        right: 15%;
+        animation-delay: 4s;
+      }
+
+      @keyframes floatHeart {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex items-center justify-center px-4 relative">
+
+    <script>
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+
+        heart.innerHTML = ["🎈", "✨", "🎂", "🎉"][
+          Math.floor(Math.random() * 4)
+        ];
+
+        heart.className = "floating text-2xl";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 7 + "s";
+        heart.style.fontSize = 20 + Math.random() * 25 + "px";
+
+        document.body.appendChild(heart);
+      }
+    </script>
+
+
+    <script>
+      for (let i = 0; i < 40; i++) {
+        const sparkle = document.createElement("div");
+
+        sparkle.innerHTML = "✦";
+        sparkle.className = "sparkle";
+
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.fontSize = 10 + Math.random() * 20 + "px";
+        sparkle.style.animationDuration = 1 + Math.random() * 3 + "s";
+
+        document.body.appendChild(sparkle);
+      }
+    </script>
+
+
+    <div class="blur-heart heart1">🩷</div>
+    <div class="blur-heart heart2">🥳</div>
+    <div class="blur-heart heart3">🎀</div>
+
+    <div
+      class="card card-float border border-pink-200/40 rounded-3xl p-8 max-w-lg w-full text-center relative z-10"
+    >
+      <div class="space-y-5">
+        <h1
+          id="line1"
+          class="text-5xl font-extrabold text-pink-900 glow text-shadow leading-tight min-h-[70px]"
+        ></h1>
+
+        <p
+          id="line2"
+          class="text-pink-800 text-2xl font-bold soft-pulse text-shadow min-h-[40px]"
+        ></p>
+
+        <h2
+          id="line3"
+          class="text-2xl text-pink-900 font-semibold text-shadow min-h-[40px]"
+        ></h2>
+
+        <p
+          id="line4"
+          class="text-pink-900 text-lg leading-relaxed text-shadow min-h-[120px]"
+        ></p>
+
+        <div id="line5" class="text-6xl soft-pulse min-h-[70px]"></div>
+
+        <div class="bg-white/30 rounded-2xl p-4">
+          <p
+            id="line6"
+            class="text-pink-800 text-lg font-medium text-shadow min-h-[30px]"
+          ></p>
         </div>
-
-  <h1 class="happy">HAPPY</h1>
-
-  <h1 class="birthday">BIRTHDAY</h1>
-
       </div>
 
-      <div class="date__of__birth">
-        <span>19 such an aunt!</span>
+
+      <button
+        onclick="celebrate()"
+        class="cute-btn mt-6 px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 active:scale-95 transition-all duration-300 text-white rounded-2xl text-lg font-bold"
+      >
+        Click for Surpise?!
+      </button>
+
+
+      <div
+        id="surprise"
+        class="hidden mt-6 text-2xl text-pink-900 text-shadow font-bold animate-bounce"
+      >
+        You mean alot to me
       </div>
 
-      <!-- BUTTON -->
-      <div class="btn">
-        <button id="btn__letter">
-          <div class="mail">Surprise?</div>
-        </button>
-      </div>
 
-    </div>
+    <audio id="music" loop>
+      <source src="lol.mp3" type="audio/mpeg" />
+    </audio>
 
-    <!-- RIGHT -->
-    <div class="right">
+    <script>
 
-      <div class="box__account">
 
-        <div class="image">
-          <img src="unnamed.png">
-        </div>
+      const messages = [
+        {
+          id: "line1",
+          text: "Happy Birthday NERD 🎉",
+        },
+        {
+          id: "line2",
+          text: "生日快乐 Sophia ♡",
+        },
+        {
+          id: "line3",
+          text: "For The Most Special Girl",
+        },
+        {
+          id: "line4",
+          text: "I hope this special day is filled with the sweet love and happiness you deserve and make tons of memories that make you smile! You deserve everything truly and I'm looking forward to seeing you grow - forever your loser bum jy",
+        },
+        {
+          id: "line5",
+          text: "𐙚❶ ❾𐙚",
+        },
+        {
+          id: "line6",
+          text: "Enjoy this birthday and celebrate it with your loved ones",
+        },
+      ];
 
-        <div class="name">
-          <span>Sophia</span>
-        </div>
+      async function typeLine(elementId, text, speed = 28) {
+        const element = document.getElementById(elementId);
 
-        <div class="balloon_one">
-          <img src="balloon1.png" width="120">
-        </div>
+        for (let i = 0; i < text.length; i++) {
+          element.innerHTML += text.charAt(i);
 
-        <div class="balloon_two">
-          <img src="balloon2.png" width="85">
-        </div>
+          await new Promise((resolve) => setTimeout(resolve, speed));
+        }
+      }
 
-      </div>
+      async function startTyping() {
+        for (const msg of messages) {
+          await typeLine(msg.id, msg.text);
 
-    </div>
+          await new Promise((resolve) => setTimeout(resolve, 400));
+        }
+      }
 
-  </div>
+      startTyping();
 
-  <!-- SMILEY -->
-  <div class="smiley__icon">
-    <img src="smiley_icon.png" width="200">
-  </div>
 
-  <!-- POPUP LETTER -->
-  <div class="boxMail">
+      function celebrate() {
+        const music = document.getElementById("music");
 
-    <i class="fa-solid fa-xmark"></i>
+        setTimeout(() => {
+          music.play();
+        }, 300);
 
-    <div class="boxMail-container">
+        document.getElementById("surprise").classList.remove("hidden");
 
-      <div class="card1">
-        <div class="userImg">
-          <img src="unnamed.png">
-        </div>
+        confetti({
+          particleCount: 250,
+          spread: 120,
+          startVelocity: 45,
+          scalar: 1.2,
+          origin: { y: 0.6 },
+        });
 
-        <h4>To: Sophia :3</h4>
-        <h3>Happy Birthday</h3>
-      </div>
+        setTimeout(() => {
+          confetti({
+            particleCount: 120,
+            angle: 60,
+            spread: 70,
+            origin: { x: 0 },
+          });
 
-      <div class="card2">
-        <div class="card2-content">
-          <h3>:3</h3>
+          confetti({
+            particleCount: 120,
+            angle: 120,
+            spread: 70,
+            origin: { x: 1 },
+          });
+        }, 300);
 
-          <h2>
-            Happy Birthday! <br><br>
+        let duration = 3000;
+        let end = Date.now() + duration;
 
-            Heyy SOPHIA !! have the best birthday ever wishing you this day to be filled with love, laughter, and unforgettable moments. May this year bring you endless joy and success. You deserve all the love and happiness in the world! Dont ever forget about me I hope I can live inside you forever hehe :3
+        (function frame() {
+          confetti({
+            particleCount: 6,
+            spread: 55,
+            origin: {
+              x: Math.random(),
+              y: Math.random() - 0.2,
+            },
+          });
 
-          </h2>
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        })();
+      }
 
-        </div>
-      </div>
 
-    </div>
-  </div>
+      document.addEventListener("mousemove", (e) => {
+        const star = document.createElement("div");
 
-</div>
-<audio id="song" src="supershy.mp3"></audio>
-<!-- SCRIPT -->
-<script>
+        star.innerHTML = "✦";
 
-const mailBox = document.querySelector('.mail');
-const boxMail = document.querySelector('.boxMail');
-const closeBtn = document.querySelector('.fa-xmark');
+        star.style.position = "absolute";
+        star.style.left = e.pageX + "px";
+        star.style.top = e.pageY + "px";
+        star.style.color = "white";
+        star.style.fontSize = "12px";
+        star.style.pointerEvents = "none";
+        star.style.opacity = "0.8";
+        star.style.zIndex = "999";
+        star.style.transition = "all 0.8s ease";
 
-mailBox.onclick = () => {
-  boxMail.classList.add('active');
+        document.body.appendChild(star);
 
-  const song = document.getElementById("song");
-  song.currentTime = 0;
-  song.play();
-};
+        setTimeout(() => {
+          star.style.transform = "translateY(-20px) scale(0)";
+          star.style.opacity = "0";
+        }, 10);
 
-closeBtn.onclick = () => {
-  boxMail.classList.remove('active');
-};
-
-</script>
-
-</body>
+        setTimeout(() => {
+          star.remove();
+        }, 800);
+      });
+    </script>
+  </body>
 </html>
